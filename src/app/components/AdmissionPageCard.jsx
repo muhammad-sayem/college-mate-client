@@ -80,6 +80,7 @@ const AdmissionPageCard = ({ college }) => {
             <fieldset className="fieldset">
               <legend className="fieldset-legend"> Candidate Name </legend>
               <input
+                required
                 type="text"
                 name='candidateName'
                 className="input w-full"
@@ -92,6 +93,7 @@ const AdmissionPageCard = ({ college }) => {
             <fieldset className="fieldset">
               <legend className="fieldset-legend"> Email </legend>
               <input
+                required
                 type="email"
                 name='email'
                 className="input w-full"
@@ -104,6 +106,7 @@ const AdmissionPageCard = ({ college }) => {
             <fieldset className="fieldset">
               <legend className="fieldset-legend"> Image </legend>
               <input
+                required
                 type="text"
                 name='image'
                 className="input w-full"

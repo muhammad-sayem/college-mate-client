@@ -1,10 +1,22 @@
 "use client"
+import { useContext, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import AdmissionPageCard from "../components/AdmissionPageCard";
 import LoadingSpinner from "../shared/LoadingSpinner";
+import AuthContext from "../Context/AuthContext";
 
 const Admission = () => {
+  const { user, loading } = useContext(AuthContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+    }
+  }, [user, loading, router]);
+
   const axiosSecure = useAxiosSecure();
 
   const { data: colleges, isLoading } = useQuery({
@@ -12,12 +24,12 @@ const Admission = () => {
     queryFn: async () => {
       const { data } = await axiosSecure.get('/colleges');
       return data;
-    }
+    },
+    enabled: !!user && !loading
   });
-  console.log("All Colleges", colleges);
 
-  if (isLoading) {
-    return  <LoadingSpinner />
+  if (loading || isLoading || !user) {
+    return <LoadingSpinner />;
   }
 
   return (
@@ -31,11 +43,9 @@ const Admission = () => {
               key={college._id}
               college={college}
             />
-
           )
         }
       </div>
-
     </div>
   );
 };
