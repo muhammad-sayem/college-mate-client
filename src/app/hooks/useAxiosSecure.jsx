@@ -3,12 +3,10 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
-
 const axiosInstance = axios.create({
   baseURL: "https://college-mate-server.vercel.app",
   withCredentials: true
 })
-
 const useAxiosSecure = () => {
   const { signOutUser } = useContext(AuthContext);
   const router = useRouter();
