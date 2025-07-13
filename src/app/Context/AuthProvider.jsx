@@ -62,14 +62,14 @@ const AuthProvider = ({ children }) => {
       console.log("State Captured and current User", currentUser);
       if (currentUser?.email) {
         const user = { email: currentUser?.email }
-        axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+        axios.post('https://college-mate-server.vercel.app/jwt', user, { withCredentials: true })
           .then(res => {
             console.log("Login token", res.data);
             setLoading(false);
           })
       }
       else {      // Logout korle token remove houar kaaj ekhane //
-        axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+        axios.post('https://college-mate-server.vercel.app/logout', {}, { withCredentials: true })
           .then(res => {
             console.log("Logout done and removed the token", res.data);
             setLoading(false);

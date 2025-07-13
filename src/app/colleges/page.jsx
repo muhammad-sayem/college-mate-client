@@ -9,7 +9,7 @@ const Colleges = () => {
   const { data: colleges, isLoading } = useQuery({
     queryKey: ['colleges'],
     queryFn: async () => {
-      const { data } = await axios.get('http://localhost:5000/colleges');
+      const { data } = await axios.get('https://college-mate-server.vercel.app/colleges');
       return data;
     }
   });

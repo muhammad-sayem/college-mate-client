@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://college-mate-server.vercel.app",
   withCredentials: true
 })
 

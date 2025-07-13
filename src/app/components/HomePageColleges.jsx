@@ -12,7 +12,7 @@ const HomePageColleges = () => {
     const fetchColleges = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`http://localhost:5000/colleges?search=${search}`);
+        const res = await axios.get(`https://college-mate-server.vercel.app/colleges?search=${search}`);
         setColleges(res.data);
       } catch (err) {
         console.error("Failed to fetch colleges", err);
